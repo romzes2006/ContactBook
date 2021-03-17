@@ -113,7 +113,6 @@ void MainWindow::on_pushButton_clicked()
     //qDebug() << "Вставка записи тедефона: " << modelPhones->insertRow(modelPhones->rowCount());
     //QModelIndex currentField = ui->tableView_2->currentIndex();
     QSqlRecord record = modelPhones->record();
-
     record.setValue("contact_id", id_parent_row);
     record.setValue("phone_type_id", "1");
     modelPhones->insertRecord(-1,record);
