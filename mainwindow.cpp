@@ -109,10 +109,15 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    qDebug() << "Вставка записи тедефона: " << modelPhones->insertRow(modelPhones->rowCount());
-    QModelIndex currentField = ui->tableView_2->currentIndex();
-    QSqlRecord record = modelPhones->record(ui->tableView_2->model()->index(currentField.row(),1).row());
-   // qDebug() << GetSelectetRowId(modelContacts,ui->tableView).toInt();
+    QString id_parent_row = GetSelectetRowId(modelContacts,ui->tableView);
+    //qDebug() << "Вставка записи тедефона: " << modelPhones->insertRow(modelPhones->rowCount());
+    //QModelIndex currentField = ui->tableView_2->currentIndex();
+    QSqlRecord record = modelPhones->record();
 
-    record.value("contact_id") = GetSelectetRowId(modelContacts,ui->tableView).toInt();
+    record.setValue("contact_id", id_parent_row);
+    record.setValue("phone_type_id", "1");
+    modelPhones->insertRecord(-1,record);
+
+    //record.setValue("contact_id",GetSelectetRowId(modelContacts,ui->tableView).toInt());
+
 }
