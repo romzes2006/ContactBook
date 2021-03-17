@@ -12,7 +12,9 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
 #include <QSqlRelationalDelegate>
+#include <QSqlRecord>
 #include <QtDebug>
+#include <QTableView>
 #include "database.h"
 
 QT_BEGIN_NAMESPACE
@@ -34,14 +36,25 @@ private slots:
 
     void on_tableView_clicked(const QModelIndex &index);
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Database *db;
     QSqlTableModel    *modelContacts;
     QSqlRelationalTableModel    *modelPhones;
+
  //   QSqlRelationalTableModel    *modelPhoneType;
    // QSqlTableModel    *modelPhones;
-    void setupModels(const QString &MainTableName, const QString &SecondaryTableName, const QString &PhoneTypeTableName);
+    void setupModels(const QString &MainTableName, const QString &SecondaryTableName,
+                     const QString &PhoneTypeTableName);
+    QString GetSelectetRowId(QSqlTableModel *dataModel, QTableView *tableView);
 
 };
 #endif // MAINWINDOW_H

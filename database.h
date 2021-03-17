@@ -29,10 +29,12 @@ public:
        ~Database();
         bool connectToDataBase();
         bool insertContactIntoTable(const QVariantList &data);
+
 private:
         QSqlDatabase db;
 private:
         bool openDataBase();
+
         void closeDataBase();
         };
 #endif // DATABASE_H
